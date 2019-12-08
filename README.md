@@ -19,5 +19,5 @@ Run "prop_to_csv.py"
 It reads the csv, saves raw data into "../data/raw" folder, and data into "../data" folder.
 
 5. run "clean_newdata_knit.rmd"
-#cleans the data
-#adds variables to measure level of success
+cleans the data
+adds variables to measure level of success
