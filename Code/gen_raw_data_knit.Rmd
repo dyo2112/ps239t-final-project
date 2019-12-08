@@ -1,0 +1,56 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# 0) NOTES
+
+Purpose of document is to save a CSV file of all California ballot measures as raw data and data. The csv is made using a python script and html file.
+
+# 1) SET UP 
+  
+  ## 1.1. General 
+  
+```{r}
+# remove all objects
+rm(list=ls())
+
+# Unload all packages 
+library(pacman)
+pacman::p_unload(all)
+
+# Add packages 
+pacman::p_load(
+  tidyverse, #dplyr, readr, etc.
+  data.table, #fread() 
+  foreign, #load data types including stata .dta files 
+  magrittr, #%<>% operator
+  skimr #for summerising
+)
+```
+
+  ## 1.2. Check wd
+
+    # Set the working directory
+setwd("/home/dviryo/CompClassFall2019/assignments/prop/analsys")
+getwd()
+  
+# 2) READ DATA
+  
+  ## 2.1. Read Data 
+
+    # Read csv "cal_prop_all.csv"
+cal_prop_all <- read_csv(paste0(file = "/home/dviryo/CompClassFall2019/assignments/prop/csvs/cal_prop_all.csv")) 
+
+# 3) SAVE DATA
+
+  ## 3.1. Save Raw Data
+
+save(cal_prop_all,
+     file="../data/raw/cal_propall_data_raw.RData")
+
+  ## 3.2. Save data
+
+save(cal_prop_all, file="../data/cal_propall_data.RData")
+
+
