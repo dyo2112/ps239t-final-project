@@ -104,18 +104,6 @@ cal_prop_all %>% skimr::skim()
 
 ## 2.3 Seperate measures by topics and add variables that measure overwhelming success/failure
 
-```{r eval=FALSE}  
-  # Convert to single topics
-  # ADD FUTURE TOPICS HERE
-  mutate(topics = ifelse(grepl("Criminal Justice", topics), "criminal_justice", topics)) %>%
-  mutate(topics = ifelse(grepl("Health", topics), "health", topics)) %>%
-  mutate(topics = ifelse(grepl("Labor", topics), "labor", topics)) %>%
-  mutate(topics = ifelse(grepl("Transportation", topics), "transportation", topics)) %>%
-  mutate(topics = ifelse(grepl("Tax & Revenue", topics), "tax_rev", topics)) %>%
-  mutate(topics = ifelse(grepl("Military & Veterans", topics), "mil_vet", topics)) %>%
-  mutate(topics = ifelse(grepl("Natural Resources", topics), "nat_res", topics))
-```
-
 ```{r}
   # for every measure with more than 1 topic - duplicate for each topic
 for (i in 1:nrow(cal_prop_all)) {
@@ -276,40 +264,6 @@ ggsave("iniative_vs_referendum2.png")
 cal_prop_greater60 %<>% 
   arrange(desc(percent)) %>%
   drop_na(percent)
-```
-
-
-```{r eval=FALSE}
-#ggplot point
-ggplot(data=cal_prop_greater60, aes(x = reorder(topics, -polar), y= percent, color = polar))+
-  geom_point(position = position_jitter(0.2, 0))
-```
-
-```{r eval=FALSE}
-#ggplot "true" dot
-ggplot(data=cal_prop_greater60, aes(x = reorder(topics, -polar), y= percent, fill = as.factor(polar)))+
-  geom_dotplot(stackdir = "centerwhole", binaxis = "y", binwidth = 2, binpositions = "all")+
-  theme_bw()
-
-```
-
-```{r eval=FALSE}
-#create simple data frame with the propositions' topics as variables, and percent concesus/disagreement
-
-for_pie = data_frame("var" = c("per_pol", "per_con"),
-                     "criminal_justice"= c(nrow(cal_prop_com[cal_prop_com$topics=="criminal_justice" & cal_prop_com$polar=="0",]) / sum(nrow(cal_prop_com[cal_prop_com$topics=="criminal_justice" & cal_prop_com$polar=="0",]), nrow(cal_prop_com[cal_prop_com$topics=="criminal_justice" & cal_prop_com$polar!="0",])), nrow(cal_prop_com[cal_prop_com$topics=="criminal_justice" & cal_prop_com$polar!="0",]) / sum(nrow(cal_prop_com[cal_prop_com$topics=="criminal_justice" & cal_prop_com$polar=="0",]), nrow(cal_prop_com[cal_prop_com$topics=="criminal_justice" & cal_prop_com$polar!="0",]))),
-                     "health"= c(nrow(cal_prop_com[cal_prop_com$topics=="health" & cal_prop_com$polar=="0",]) / sum(nrow(cal_prop_com[cal_prop_com$topics=="health" & cal_prop_com$polar=="0",]), nrow(cal_prop_com[cal_prop_com$topics=="health" & cal_prop_com$polar!="0",])), nrow(cal_prop_com[cal_prop_com$topics=="health" & cal_prop_com$polar!="0",]) / sum(nrow(cal_prop_com[cal_prop_com$topics=="health" & cal_prop_com$polar=="0",]), nrow(cal_prop_com[cal_prop_com$topics=="health" & cal_prop_com$polar!="0",]))),
-                     "transportation"= c(nrow(cal_prop_com[cal_prop_com$topics=="transportation" & cal_prop_com$polar=="0",]) / sum(nrow(cal_prop_com[cal_prop_com$topics=="transportation" & cal_prop_com$polar=="0",]), nrow(cal_prop_com[cal_prop_com$topics=="transportation" & cal_prop_com$polar!="0",])), nrow(cal_prop_com[cal_prop_com$topics=="transportation" & cal_prop_com$polar!="0",]) / sum(nrow(cal_prop_com[cal_prop_com$topics=="transportation" & cal_prop_com$polar=="0",]), nrow(cal_prop_com[cal_prop_com$topics=="transportation" & cal_prop_com$polar!="0",]))),
-                     "labor"= c(nrow(cal_prop_com[cal_prop_com$topics=="labor" & cal_prop_com$polar=="0",]) / sum(nrow(cal_prop_com[cal_prop_com$topics=="labor" & cal_prop_com$polar=="0",]), nrow(cal_prop_com[cal_prop_com$topics=="labor" & cal_prop_com$polar!="0",])), nrow(cal_prop_com[cal_prop_com$topics=="labor" & cal_prop_com$polar!="0",]) / sum(nrow(cal_prop_com[cal_prop_com$topics=="labor" & cal_prop_com$polar=="0",]), nrow(cal_prop_com[cal_prop_com$topics=="labor" & cal_prop_com$polar!="0",]))))
-
-
-```
-# NOT RUNNIG print basic pie charts
-```{r eval=FALSE}
-list <- colnames(for_pie)
-for(i in 2:length(list)) {
-  pie(as.numeric(unlist(for_pie[i])), labels = unlist(for_pie[i]), main = colnames(for_pie[i]))
-}
 ```
 
 ## 5.6 compare the overwhelming success/fail
