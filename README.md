@@ -13,31 +13,44 @@ Python, 3.7.3
 
 Files:
 
-California Ballot Measures.gslides: My talk slides.
+California Ballot Measures.pdf: My talk slides.
 
 Code/
 01_prop_to_csv.py: Scrapes the HTML from NCSL and exports to CSV.
+
 02_gen_raw_data_knit.Rmd: generates and saves raw data.
+
 03_clean_newdata_knit.Rmd: Loads, cleans, and adds variables to the data. Also conducts descriptive analysis of the data, producing the tables and visualizations.
+
 
 Data/
 CA_all.html: the DB downloaded from NCSL using the SingleFile chrome extension.
+
 cal_prop_all.csv: Includes all the California initiatives, with observations for the following variables:
-election: general/primary/special
-year
-type: initiative/leg referendun/ pop referendum
-topic: one of 39 topics categorized by NCSL
-percent: the percent yes vote on the measure
-status: pass/fail
+
+election: general/primary/special;
+year;
+type: initiative/leg referendun/ pop referendum;
+topic: one of 39 topics categorized by NCSL;
+percent: the percent yes vote on the measure;
+status: pass/fail;
+
 cal_propall_data.RData: the same as the csv.
+
 cal_pro_pall_clean.RData: the final data file used for analysis.
 
+
 Results/
-change_over_time.png: change in level of success over time per topic
-iniative_vs_referendum.png: difference between level of success of initiative vs. referendum per topic
-iniative_vs_referendum2.png: comparison of success between topics per type
-overwhelming_compare.png: comparison between overwhelming success (>70% yes vote) and failure (<30% yes vote) per topic
-pass_vs_fail.png: comparison between levels of success (>50% yes vote = pass) per topic
+change_over_time.png: change in level of success over time per topic.
+
+iniative_vs_referendum.png: difference between level of success of initiative vs. referendum per topic.
+
+iniative_vs_referendum2.png: comparison of success between topics per type.
+
+overwhelming_compare.png: comparison between overwhelming success (>70% yes vote) and failure (<30% yes vote) per topic.
+
+pass_vs_fail.png: comparison between levels of success (>50% yes vote = pass) per topic.
+
 
 
 collecting data procees:
