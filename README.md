@@ -2,15 +2,19 @@
 
 Ballot measures voting patterns project - 
 
-Short Description
+Short Description:
+
 I scraped NCSL's Ballot Measure DB. Then, in R, I cleaned the data and added variables to measure the level of ballot measure success per topic and per type.
 
-Dependencies
+Dependencies:
+
 R, 3.6.1
 Python, 3.7.3
 
-Files
+Files:
+
 California Ballot Measures.gslides: My talk slides.
+
 Code/
 01_prop_to_csv.py: Scrapes the HTML from NCSL and exports to CSV.
 02_gen_raw_data_knit.Rmd: generates and saves raw data.
